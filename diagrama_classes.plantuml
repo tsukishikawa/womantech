@@ -1,0 +1,36 @@
+@startuml diagrama_classes
+' Tema com identidade roxa escura
+skinparam backgroundColor #f9f6fb
+skinparam sequence {
+    ArrowColor #5e2b91
+    LifeLineBorderColor #5e2b91
+    LifeLineBackgroundColor #e3d5f3
+    ParticipantBorderColor #5e2b91
+    ParticipantBackgroundColor #e3d5f3
+    ActorBorderColor #5e2b91
+    ActorBackgroundColor #dbc3f7
+    BoxBackgroundColor #f3eaff
+}
+
+actor Usuária
+
+participant "App WomanTech" as App
+participant "Controlador de Mentoria" as Controlador
+database "Banco de Dados" as DB
+
+Usuária -> App : Abre o aplicativo
+Usuária -> App : Acessa a aba de mentorias
+
+App -> Controlador : Requisitar lista de mentoras
+Controlador -> DB : Buscar mentoras disponíveis
+DB --> Controlador : Lista de mentoras
+Controlador --> App : Retornar mentoras disponíveis
+App --> Usuária : Exibe lista de mentoras
+
+Usuária -> App : Escolhe mentora e preenche dados\n(nome, telefone, localização, data)
+App -> Controlador : Enviar dados de inscrição
+Controlador -> DB : Salvar inscrição na mentoria
+DB --> Controlador : Confirmação de salvamento
+Controlador --> App : Retornar sucesso
+App --> Usuária : Confirma inscrição com sucesso
+@enduml
