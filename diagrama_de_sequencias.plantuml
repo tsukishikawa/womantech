@@ -1,4 +1,4 @@
-@startuml diagrama_classes
+@startuml diagrama_de_sequencias
 ' Tema com identidade roxa escura
 skinparam backgroundColor #f9f6fb
 skinparam sequence {
